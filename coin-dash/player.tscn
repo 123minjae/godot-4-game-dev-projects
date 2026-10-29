@@ -67,13 +67,22 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ilvu"]
+size = Vector2(30, 40)
+
 [node name="Player" type="Area2D" unique_id=1505785093]
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1177092402]
+position = Vector2(0, -12)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_7ilvu")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.5988057
+frame = 2
+frame_progress = 0.14012994
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=906983515]
+shape = SubResource("RectangleShape2D_7ilvu")
 metadata/_edit_group_ = true
