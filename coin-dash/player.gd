@@ -1,5 +1,8 @@
 extends Area2D
 
+signal  pickup ## Signal When Pick up Coin
+signal hurt ## Signal When player gets hurt
+
 @export var speed = 350
 var velocity = Vector2.ZERO
 var screensize = Vector2(480,720)
@@ -28,3 +31,12 @@ func die():
 	$AnimatedSprite2D.animation = "hurt"
 	set_process(false)
 	
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("coins"):
+		area.pickup()
+		pickup.emit()
+	if area.is_in_group("obstacles"):
+		hurt.emit()
+		die()

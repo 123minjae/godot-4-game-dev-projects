@@ -88,3 +88,5 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=906983515]
 shape = SubResource("RectangleShape2D_7ilvu")
 metadata/_edit_group_ = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
