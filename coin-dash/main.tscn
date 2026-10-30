@@ -4,10 +4,13 @@
 [ext_resource type="Script" uid="uid://1sf7rvdnv0x8" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://ddi6nssywpmjg" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://dx0xce5wm2wm5" path="res://coin.tscn" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bk2fcqun17xoj" path="res://hud.tscn" id="3_lquwl"]
 
 [node name="Main" type="Node" unique_id=515216538]
 script = ExtResource("1_h2yge")
 coin_scene = ExtResource("2_1bvp3")
+
+[node name="HUD" parent="." unique_id=1573626231 instance=ExtResource("3_lquwl")]
 
 [node name="Background" type="TextureRect" parent="." unique_id=1266432365]
 anchors_preset = 15
@@ -21,3 +24,8 @@ stretch_mode = 1
 [node name="Player" parent="." unique_id=1505785093 instance=ExtResource("1_ig7tw")]
 
 [node name="GameTimer" type="Timer" parent="." unique_id=868635561]
+
+[connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]
+[connection signal="hurt" from="Player" to="." method="_on_player_hurt"]
+[connection signal="pickup" from="Player" to="." method="_on_player_pickup"]
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
