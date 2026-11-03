@@ -40,7 +40,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("6_op7ga")
 }],
-"loop": 2,
+"loop": 1,
 "name": &"idle",
 "speed": 8.0
 }, {
@@ -81,8 +81,6 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_7ilvu")
 animation = &"idle"
 autoplay = "idle"
-frame = 2
-frame_progress = 0.14012994
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=906983515]
