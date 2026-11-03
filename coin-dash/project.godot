@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Coin_Dash"
+run/main_scene="uid://lg6xcfxk18y3"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,6 +20,12 @@ config/icon="res://icon.svg"
 window/size/viewport_width=480
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
+
+[global_group]
+
+coins=""
+powerups=""
+obstacles=""
 
 [physics]
 
