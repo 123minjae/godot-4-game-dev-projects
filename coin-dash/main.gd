@@ -13,8 +13,7 @@ func _ready() -> void:
 	screensize = get_viewport().get_visible_rect().size
 	$Player.screensize = screensize
 	$Player.hide()
-	$HUD.update_score(score)
-	$HUD.update_timer(time_left)
+	
 
 func _process(delta):
 	if playing and get_tree().get_nodes_in_group("coins").size()==0:
@@ -32,6 +31,8 @@ func new_game():
 	$Player.show()
 	$GameTimer.start()
 	spawn_coins()
+	$HUD.update_score(score)
+	$HUD.update_timer(time_left)
 	
 func spawn_coins():
 	for i in level+4:
