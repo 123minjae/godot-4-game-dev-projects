@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://cgkcw23mr62ib" path="res://assets/audio/Level.wav" id="7_kek77"]
 [ext_resource type="AudioStream" uid="uid://gna2neyy8pee" path="res://assets/audio/EndSound.wav" id="8_4c57u"]
 [ext_resource type="AudioStream" uid="uid://oib121c6w8nk" path="res://assets/audio/Powerup.wav" id="9_kek77"]
+[ext_resource type="PackedScene" uid="uid://buklseiv0ef7y" path="res://cactus.tscn" id="11_efxa6"]
 
 [node name="Main" type="Node" unique_id=515216538]
 script = ExtResource("1_h2yge")
@@ -26,6 +27,15 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_0xm2m")
 stretch_mode = 1
+
+[node name="Cactus" parent="." unique_id=1723819517 instance=ExtResource("11_efxa6")]
+position = Vector2(228, 241)
+
+[node name="Cactus2" parent="." unique_id=736298296 instance=ExtResource("11_efxa6")]
+position = Vector2(138, 476)
+
+[node name="Cactus3" parent="." unique_id=706210115 instance=ExtResource("11_efxa6")]
+position = Vector2(364, 370)
 
 [node name="Player" parent="." unique_id=1505785093 instance=ExtResource("1_ig7tw")]
 
