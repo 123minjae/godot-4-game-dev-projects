@@ -5,10 +5,10 @@ signal hurt ## Signal When player gets hurt
 
 @export var speed = 350
 var velocity = Vector2.ZERO
-var screensize = Vector2(480,720)
+var screensize = Vector2.ZERO
 
 func _process(delta):
-	velocity = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
+	velocity = Input.get_vector("move_left","move_right","move_up","move_down")
 	position +=velocity*speed*delta
 	
 	position.x = clamp(position.x,0,screensize.x)
