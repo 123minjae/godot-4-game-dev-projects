@@ -20,6 +20,7 @@ func _process(delta):
 	if playing and get_tree().get_nodes_in_group("coins").size()==0:
 		level+=1
 		time_left+=5
+		$HUD.update_timer(time_left)
 		spawn_coins()
 		$PowerupTimer.wait_time = randf_range(5,10)
 		$PowerupTimer.start()
