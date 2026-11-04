@@ -3,6 +3,9 @@ extends CanvasLayer
 
 signal start_game
 
+func _ready() -> void:
+	$StartButton.grab_focus()
+	
 func update_score(value):
 	$MarginContainer/Score.text = str(value)
 	
@@ -18,6 +21,7 @@ func show_game_over():
 	show_message("Game Over")
 	await $Timer.timeout
 	$StartButton.show()
+	$StartButton.grab_focus()
 	$Message.text = "Coin Dash!"
 	$Message.show()
 
