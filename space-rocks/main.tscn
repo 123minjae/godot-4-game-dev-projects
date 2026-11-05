@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cbj8dmvqwjgr7"]
+
+[ext_resource type="Texture2D" uid="uid://bwp66jkd1fhr" path="res://assets/space_background.png" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://cuhf3txpqils" path="res://player.tscn" id="2_h2yge"]
+
+[node name="Main" type="Node" unique_id=163083128]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=910086060]
+texture = ExtResource("1_0xm2m")
+centered = false
+
+[node name="Player" parent="." unique_id=341713635 instance=ExtResource("2_h2yge")]
