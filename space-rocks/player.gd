@@ -13,6 +13,8 @@ var rotation_dir = 0
 
 @export var bullet_scene : PackedScene
 @export var fire_rate = 0.25
+var radius = 0
+
 
 var can_shoot = true
 
@@ -20,6 +22,7 @@ func _ready() -> void:
 	change_state(ALIVE)
 	screensize = get_viewport_rect().size
 	$GunCooldown.wait_time = fire_rate
+	radius = $CollisionShape2D.shape.get_rect().size.x / 2
 
 func change_state(new_state):
 	match new_state:
@@ -62,8 +65,8 @@ func _physics_process(delta: float) -> void:
 	
 func _integrate_forces(physics_state):
 	var xform = physics_state.transform
-	xform.origin.x = wrapf(xform.origin.x,0,screensize.x)
-	xform.origin.y = wrapf(xform.origin.y,0,screensize.y)
+	xform.origin.x = wrapf(xform.origin.x, -radius, screensize.x + radius)
+	xform.origin.y = wrapf(xform.origin.y, -radius, screensize.y + radius)
 	physics_state.transform = xform
 
 

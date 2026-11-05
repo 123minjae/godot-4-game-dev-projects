@@ -15,10 +15,10 @@ func start(_position, _velocity, _size):
 	shape.radius = radius
 	$CollisionShape2D.shape = shape
 	linear_velocity = _velocity
-	angular_velocity = randi_range(-PI,PI)
+	angular_velocity = randf_range(-PI,PI)
 	
 func _integrate_forces(physics_state):
 	var xform = physics_state.transform
-	xform.origin.x = wrapf(xform.origin.x,0,screensize.x)
-	xform.origin.y = wrapf(xform.origin.y,0,screensize.y)
+	xform.origin.x = wrapf(xform.origin.x,0-radius,screensize.x+radius)
+	xform.origin.y = wrapf(xform.origin.y,0-radius,screensize.y+radius)
 	physics_state.transform = xform
