@@ -1,5 +1,11 @@
 extends RigidBody2D
 
+signal lives_changed
+signal dead
+
+var reset_pos = false
+var lives = 0:set = set_lives
+
 var screensize
 
 enum {INIT,ALIVE,INVULNERABLE,DEAD}
@@ -19,7 +25,7 @@ var radius = 0
 var can_shoot = true
 
 func _ready() -> void:
-	change_state(ALIVE)
+	change_state(INIT)
 	screensize = get_viewport_rect().size
 	$GunCooldown.wait_time = fire_rate
 	radius = $CollisionShape2D.shape.get_rect().size.x / 2
@@ -68,7 +74,25 @@ func _integrate_forces(physics_state):
 	xform.origin.x = wrapf(xform.origin.x, -radius, screensize.x + radius)
 	xform.origin.y = wrapf(xform.origin.y, -radius, screensize.y + radius)
 	physics_state.transform = xform
+	
+	if reset_pos:
+		physics_state.transform.origin = screensize/2
+		reset_pos = false
 
 
 func _on_gun_cooldown_timeout() -> void:
 	can_shoot = true
+	
+func set_lives(value):
+	lives = value
+	lives_changed.emit(lives)
+	if lives <= 0:
+		change_state(DEAD)
+	else:
+		change_state(INVULNERABLE)
+
+func reset():
+	reset_pos = true
+	$Sprite2D.show()
+	lives = 3
+	change_state(ALIVE)

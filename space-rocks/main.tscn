@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dl3ix6isvf8wa" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://ce65kebyx2wws" path="res://rock.tscn" id="2_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://cuhf3txpqils" path="res://player.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://byol2nacjm0r8" path="res://hud.tscn" id="5_lquwl"]
 
 [sub_resource type="Curve2D" id="Curve2D_0xm2m"]
 _data = {
@@ -25,3 +26,8 @@ centered = false
 curve = SubResource("Curve2D_0xm2m")
 
 [node name="RockSpawn" type="PathFollow2D" parent="RockPath" unique_id=688938584]
+
+[node name="HUD" parent="." unique_id=1710503402 instance=ExtResource("5_lquwl")]
+
+[connection signal="lives_changed" from="Player" to="HUD" method="update_lives"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]
