@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://cuhf3txpqils"]
+
+[ext_resource type="Texture2D" uid="uid://vbnqn15yweoa" path="res://assets/player_ship.png" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://dtubwrpum4j3i" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="PackedScene" uid="uid://ccbjhrjye0vbr" path="res://bullet.tscn" id="2_i3pqv"]
+[ext_resource type="PackedScene" uid="uid://x0b021x5j3p2" path="res://explosion.tscn" id="4_hqtel"]
+[ext_resource type="AudioStream" uid="uid://cie727yg0g1uh" path="res://assets/sounds/laser.ogg" id="5_2hs0m"]
+[ext_resource type="AudioStream" uid="uid://dvjnpa0v7x68a" path="res://assets/sounds/engine.ogg" id="6_1jxqw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
+radius = 30.066593
+
+[sub_resource type="Curve" id="Curve_7c6p8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.1781609), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_0ch55"]
+offsets = PackedFloat32Array(0, 0.72131145)
+colors = PackedColorArray(1, 0.64705884, 0, 1, 1, 0, 0.18039216, 1)
+
+[node name="Player" type="RigidBody2D" unique_id=341713635]
+contact_monitor = true
+max_contacts_reported = 1
+linear_damp = 1.0
+angular_damp = 5.0
+script = ExtResource("1_onrkg")
+bullet_scene = ExtResource("2_i3pqv")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1792269966]
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_4flbx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1059374260]
+shape = SubResource("CircleShape2D_onrkg")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=616919680]
+position = Vector2(50, 0)
+
+[node name="GunCooldown" type="Timer" parent="." unique_id=1445343226]
+one_shot = true
+autostart = true
+
+[node name="Explosion" parent="." unique_id=228999151 instance=ExtResource("4_hqtel")]
+visible = false
+
+[node name="InvulnerabilityTimer" type="Timer" parent="." unique_id=722917070]
+wait_time = 2.0
+one_shot = true
+
+[node name="LaserSound" type="AudioStreamPlayer" parent="." unique_id=1499340358]
+stream = ExtResource("5_2hs0m")
+
+[node name="EngineSound" type="AudioStreamPlayer" parent="." unique_id=2119191086]
+stream = ExtResource("6_1jxqw")
+volume_db = 10.0
+
+[node name="Exhaust" type="CPUParticles2D" parent="." unique_id=1056179846]
+show_behind_parent = true
+position = Vector2(-28, 0)
+rotation = 3.1415927
+amount = 25
+lifetime = 0.09999999999999999
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(1, 5)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 400.0
+scale_amount_max = 8.0
+scale_amount_curve = SubResource("Curve_7c6p8")
+color_ramp = SubResource("Gradient_0ch55")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="GunCooldown" to="." method="_on_gun_cooldown_timeout"]
+[connection signal="timeout" from="InvulnerabilityTimer" to="." method="_on_invulnerability_timer_timeout"]
