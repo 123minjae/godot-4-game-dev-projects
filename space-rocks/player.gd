@@ -21,8 +21,14 @@ var rotation_dir = 0
 @export var fire_rate = 0.25
 var radius = 0
 
-
 var can_shoot = true
+
+signal shield_changed
+
+@export var max_shield = 100.0
+@export var shield_regen = 5.0
+
+var shield = 0: set = set_shield
 
 func _ready() -> void:
 	change_state(INIT)
@@ -50,6 +56,7 @@ func change_state(new_state):
 	state = new_state
 	
 func _process(delta: float) -> void:
+	shield += shield_regen * delta
 	get_input()
 	
 func get_input():
@@ -95,6 +102,7 @@ func set_lives(value):
 	lives_changed.emit(lives)
 	if lives <= 0:
 		change_state(DEAD)
+		shield = max_shield
 	else:
 		change_state(INVULNERABLE)
 
@@ -111,12 +119,20 @@ func _on_invulnerability_timer_timeout() -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("rocks"):
+		shield -= body.size * 25
 		body.explode()
-		lives -= 1
-		explode()
+		
 
 func explode():
 	$Explosion.show()
 	$Explosion/AnimationPlayer.play("explosion")
 	await  $Explosion/AnimationPlayer.animation_finished
 	$Explosion.hide()
+	
+func set_shield(value):
+	value = min(value,max_shield)
+	shield = value
+	shield_changed.emit(shield/max_shield)
+	if shield <= 0 :
+		lives -= 1
+		explode()
