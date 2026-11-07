@@ -99,10 +99,10 @@ func _on_gun_cooldown_timeout() -> void:
 	
 func set_lives(value):
 	lives = value
+	shield = max_shield
 	lives_changed.emit(lives)
 	if lives <= 0:
 		change_state(DEAD)
-		shield = max_shield
 	else:
 		change_state(INVULNERABLE)
 
