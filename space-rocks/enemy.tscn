@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bvpn63ry3qj3j" path="res://enemy_bullet.tscn" id="2_epg4t"]
 [ext_resource type="PackedScene" uid="uid://cq54drfkotf1g" path="res://enemy_paths.tscn" id="2_qi2p4"]
 [ext_resource type="PackedScene" uid="uid://x0b021x5j3p2" path="res://explosion.tscn" id="3_qi2p4"]
+[ext_resource type="AudioStream" uid="uid://b44l4np001rud" path="res://assets/sounds/explosion.wav" id="6_wujgv"]
+[ext_resource type="AudioStream" uid="uid://bat0l62qjqcw7" path="res://assets/sounds/enemy_laser.wav" id="7_hb8ge"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7ilvu"]
 radius = 33.06055
@@ -69,6 +71,13 @@ visible = false
 [node name="GunCooldown" type="Timer" parent="." unique_id=789010873]
 wait_time = 1.5
 autostart = true
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="." unique_id=1744520447]
+stream = ExtResource("6_wujgv")
+volume_db = 10.0
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="." unique_id=446720056]
+stream = ExtResource("7_hb8ge")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="GunCooldown" to="." method="_on_gun_cooldown_timeout"]

@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cuhf3txpqils" path="res://player.tscn" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dyujryxl8yoqi" path="res://enemy.tscn" id="3_7mycd"]
 [ext_resource type="PackedScene" uid="uid://byol2nacjm0r8" path="res://hud.tscn" id="5_lquwl"]
+[ext_resource type="AudioStream" uid="uid://b44l4np001rud" path="res://assets/sounds/explosion.wav" id="7_kek77"]
+[ext_resource type="AudioStream" uid="uid://nygntt1mfyqt" path="res://assets/sounds/levelup.ogg" id="8_4c57u"]
+[ext_resource type="AudioStream" uid="uid://dii2us1r2verp" path="res://assets/sounds/Funky-Gameplay_Looping.ogg" id="9_efxa6"]
 
 [sub_resource type="Curve2D" id="Curve2D_0xm2m"]
 _data = {
@@ -34,6 +37,16 @@ curve = SubResource("Curve2D_0xm2m")
 
 [node name="EnemyTimer" type="Timer" parent="." unique_id=1400704013]
 one_shot = true
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="." unique_id=143631387]
+stream = ExtResource("7_kek77")
+volume_db = 10.0
+
+[node name="LevelupSound" type="AudioStreamPlayer" parent="." unique_id=2142361379]
+stream = ExtResource("8_4c57u")
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=913342642]
+stream = ExtResource("9_efxa6")
 
 [connection signal="dead" from="Player" to="." method="game_over"]
 [connection signal="lives_changed" from="Player" to="HUD" method="update_lives"]
