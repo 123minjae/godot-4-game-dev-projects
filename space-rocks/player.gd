@@ -41,6 +41,7 @@ func change_state(new_state):
 		INIT:
 			$CollisionShape2D.set_deferred("disabled",true)
 			$Sprite2D.modulate.a = 0.5
+			$Sprite2D.hide()
 		ALIVE:
 			$CollisionShape2D.set_deferred("disabled",false)
 			$Sprite2D.modulate.a = 1
@@ -99,6 +100,7 @@ func _integrate_forces(physics_state):
 	
 	if reset_pos:
 		physics_state.transform.origin = screensize/2
+		$Sprite2D.show()
 		reset_pos = false
 
 
@@ -116,7 +118,6 @@ func set_lives(value):
 
 func reset():
 	reset_pos = true
-	$Sprite2D.show()
 	lives = 3
 	change_state(ALIVE)
 
