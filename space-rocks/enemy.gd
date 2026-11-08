@@ -23,6 +23,8 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 		
 func shoot():
+	if not $VisibleOnScreenNotifier2D.is_on_screen():
+		return
 	var dir = global_position.direction_to(target.global_position)
 	dir = dir.rotated(randf_range(-bullet_spread,bullet_spread))
 	var b = bullet_scene.instantiate()
