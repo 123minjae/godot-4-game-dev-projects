@@ -19,6 +19,7 @@ offsets = PackedFloat32Array(0, 0.72131145)
 colors = PackedColorArray(1, 0.64705884, 0, 1, 1, 0, 0.18039216, 1)
 
 [node name="Player" type="RigidBody2D" unique_id=341713635]
+inertia = 452.0
 contact_monitor = true
 max_contacts_reported = 1
 linear_damp = 1.0
