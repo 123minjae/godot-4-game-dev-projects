@@ -73,19 +73,6 @@ func game_over():
 	playing = false
 	$Music.stop()
 	$HUD.game_over()
-	
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause"):
-		if not playing:
-			return
-		get_tree().paused = not get_tree().paused
-		var message = $HUD/VBoxContainer/Message
-		if get_tree().paused:
-			message.text = "Paused"
-			message.show()
-		else:
-			message.text = ""
-			message.hide()
 
 
 func _on_enemy_timer_timeout() -> void:
@@ -93,3 +80,16 @@ func _on_enemy_timer_timeout() -> void:
 	add_child(e)
 	e.target = $Player
 	$EnemyTimer.start(randf_range(20,40))
+
+
+func _on_hud_pause_pressed() -> void:
+	if not playing:
+			return
+	get_tree().paused = not get_tree().paused
+	var message = $HUD/VBoxContainer/Message
+	if get_tree().paused:
+		message.text = "Paused"
+		message.show()
+	else:
+		message.text = ""
+		message.hide()
