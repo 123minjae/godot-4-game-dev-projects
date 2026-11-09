@@ -14,6 +14,7 @@ func _ready() -> void:
 	var path = $EnemyPaths.get_children()[randi() % $EnemyPaths.get_child_count()]
 	path.add_child(follow)
 	follow.loop = false
+	position = follow.global_position
 	
 func _physics_process(delta: float) -> void:
 	rotation += deg_to_rad(rotation_speed) * delta
