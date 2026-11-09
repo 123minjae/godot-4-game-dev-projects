@@ -24,6 +24,7 @@ window/stretch/aspect="expand"
 
 rocks=""
 enemies=""
+bullets=""
 
 [input]
 

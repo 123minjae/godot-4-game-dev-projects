@@ -17,7 +17,6 @@ _data = {
 point_count = 5
 
 [node name="Main" type="Node" unique_id=163083128]
-process_mode = 3
 script = ExtResource("1_h2yge")
 rock_scene = ExtResource("2_1bvp3")
 enemy_scene = ExtResource("3_7mycd")
@@ -34,6 +33,7 @@ curve = SubResource("Curve2D_0xm2m")
 [node name="RockSpawn" type="PathFollow2D" parent="RockPath" unique_id=688938584]
 
 [node name="HUD" parent="." unique_id=1710503402 instance=ExtResource("5_lquwl")]
+process_mode = 3
 
 [node name="EnemyTimer" type="Timer" parent="." unique_id=1400704013]
 one_shot = true
@@ -51,5 +51,6 @@ stream = ExtResource("9_efxa6")
 [connection signal="dead" from="Player" to="." method="game_over"]
 [connection signal="lives_changed" from="Player" to="HUD" method="update_lives"]
 [connection signal="shield_changed" from="Player" to="HUD" method="update_shield"]
+[connection signal="pause_pressed" from="HUD" to="." method="_on_hud_pause_pressed"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]

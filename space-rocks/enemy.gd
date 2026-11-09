@@ -14,6 +14,7 @@ func _ready() -> void:
 	var path = $EnemyPaths.get_children()[randi() % $EnemyPaths.get_child_count()]
 	path.add_child(follow)
 	follow.loop = false
+	position = follow.global_position
 	
 func _physics_process(delta: float) -> void:
 	rotation += deg_to_rad(rotation_speed) * delta
@@ -23,6 +24,8 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 		
 func shoot():
+	if not $VisibleOnScreenNotifier2D.is_on_screen():
+		return
 	var dir = global_position.direction_to(target.global_position)
 	dir = dir.rotated(randf_range(-bullet_spread,bullet_spread))
 	var b = bullet_scene.instantiate()

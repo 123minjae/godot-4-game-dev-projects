@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 signal start_game
+signal pause_pressed
 
 @onready var lives_counter = $MarginContainer/HBoxContainer/LivesCounter.get_children()
 @onready var score_label = $MarginContainer/HBoxContainer/ScoreLabel
@@ -52,3 +53,7 @@ func _on_start_button_pressed() -> void:
 func _on_timer_timeout() -> void:
 	message.hide()
 	message.text = ""
+	
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		pause_pressed.emit()

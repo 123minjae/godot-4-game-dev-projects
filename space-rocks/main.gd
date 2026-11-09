@@ -12,6 +12,7 @@ var playing = false
 
 func _ready() -> void:
 	screensize = get_viewport().get_visible_rect().size
+	$Player.shield = $Player.max_shield
 	$HUD/VBoxContainer/StartButton.grab_focus()
 	
 func _process(delta: float) -> void:
@@ -48,6 +49,8 @@ func _on_rock_exploded(size,radius,pos,vel):
 		
 func new_game():
 	get_tree().call_group("rocks", "queue_free")
+	get_tree().call_group("enemies", "queue_free")
+	get_tree().call_group("bullets", "queue_free")
 	$Music.play()
 	level = 0
 	score = 0
@@ -60,6 +63,7 @@ func new_game():
 func new_level():
 	level+=1
 	$HUD.show_message("Wave %s" % level)
+	$Player.add_lives()
 	for i in level:
 		spawn_rock(3)
 	$EnemyTimer.start(randf_range(5,10))
@@ -69,19 +73,6 @@ func game_over():
 	playing = false
 	$Music.stop()
 	$HUD.game_over()
-	
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause"):
-		if not playing:
-			return
-		get_tree().paused = not get_tree().paused
-		var message = $HUD/VBoxContainer/Message
-		if get_tree().paused:
-			message.text = "Paused"
-			message.show()
-		else:
-			message.text = ""
-			message.hide()
 
 
 func _on_enemy_timer_timeout() -> void:
@@ -89,3 +80,16 @@ func _on_enemy_timer_timeout() -> void:
 	add_child(e)
 	e.target = $Player
 	$EnemyTimer.start(randf_range(20,40))
+
+
+func _on_hud_pause_pressed() -> void:
+	if not playing:
+			return
+	get_tree().paused = not get_tree().paused
+	var message = $HUD/VBoxContainer/Message
+	if get_tree().paused:
+		message.text = "Paused"
+		message.show()
+	else:
+		message.text = ""
+		message.hide()
