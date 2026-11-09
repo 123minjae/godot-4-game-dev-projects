@@ -108,13 +108,17 @@ func _on_gun_cooldown_timeout() -> void:
 	can_shoot = true
 	
 func set_lives(value):
+	var lost = value < lives 
 	lives = value
 	shield = max_shield
 	lives_changed.emit(lives)
 	if lives <= 0:
 		change_state(DEAD)
-	else:
+	elif lost:
 		change_state(INVULNERABLE)
+
+func add_lives():
+	lives = min(3,lives+1)
 
 func reset():
 	reset_pos = true

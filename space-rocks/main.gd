@@ -61,6 +61,7 @@ func new_game():
 func new_level():
 	level+=1
 	$HUD.show_message("Wave %s" % level)
+	$Player.add_lives()
 	for i in level:
 		spawn_rock(3)
 	$EnemyTimer.start(randf_range(5,10))
