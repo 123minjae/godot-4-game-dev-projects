@@ -54,7 +54,6 @@ stream = ExtResource("5_2hs0m")
 
 [node name="EngineSound" type="AudioStreamPlayer" parent="." unique_id=2119191086]
 stream = ExtResource("6_1jxqw")
-volume_db = 10.0
 
 [node name="Exhaust" type="CPUParticles2D" parent="." unique_id=1056179846]
 show_behind_parent = true
