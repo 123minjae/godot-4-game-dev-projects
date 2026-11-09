@@ -49,6 +49,8 @@ func _on_rock_exploded(size,radius,pos,vel):
 		
 func new_game():
 	get_tree().call_group("rocks", "queue_free")
+	get_tree().call_group("enemies", "queue_free")
+	get_tree().call_group("bullets", "queue_free")
 	$Music.play()
 	level = 0
 	score = 0
