@@ -8,7 +8,7 @@ func set_life(value):
 	life = value
 	life_changed.emit(life)
 	if life <= 0:
-		change_state(0)
+		change_state(DEAD)
 
 @export var gravity = 750
 @export var run_speed = 150
@@ -78,6 +78,7 @@ func _physics_process(delta: float) -> void:
 		
 func reset(_position):
 	position = _position
+	life = 3
 	show()
 	change_state(IDLE)
 	
