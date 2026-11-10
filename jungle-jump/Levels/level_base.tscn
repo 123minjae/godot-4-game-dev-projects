@@ -15,7 +15,7 @@ tile_set = ExtResource("1_sq5o2")
 [node name="Items" type="TileMapLayer" parent="." unique_id=1156584414]
 tile_set = ExtResource("2_o7a6f")
 
-[node name="Danger" type="TileMapLayer" parent="." unique_id=1738015066]
+[node name="Danger" type="TileMapLayer" parent="." unique_id=1738015066 groups=["danger"]]
 tile_set = ExtResource("3_exesn")
 
 [node name="Player" parent="." unique_id=2074386318 instance=ExtResource("5_8kvgk")]

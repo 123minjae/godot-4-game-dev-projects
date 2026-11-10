@@ -10,5 +10,8 @@ tile_map_data = PackedByteArray("AAD5/wAAAAABAAEAAAD6/wAAAAABAAEAAAD7/wAAAAABAAE
 [node name="Items" parent="." index="1" unique_id=1156584414]
 tile_map_data = PackedByteArray("AAAIAP//AQAAAAAAAAACAP//AAAAAAAAAAA=")
 
+[node name="Danger" parent="." index="2" unique_id=1738015066]
+tile_map_data = PackedByteArray("AADw////AAAJAAwAAADx////AAAJAAwAAADy////AAAJAAwAAADz////AAAJAAwAAADv////AAAJAAwAAAA=")
+
 [node name="SpawnPoint" parent="." index="4" unique_id=1731781762]
 position = Vector2(-87, -8)
