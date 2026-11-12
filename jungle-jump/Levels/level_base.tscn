@@ -2,12 +2,36 @@
 
 [ext_resource type="Script" uid="uid://bmp8r7s3tel64" path="res://Levels/level_base.gd" id="1_exesn"]
 [ext_resource type="TileSet" uid="uid://dhxw3f8l2saqn" path="res://assets/tilesets/tiles_world.tres" id="1_sq5o2"]
+[ext_resource type="Texture2D" uid="uid://b2fsl1kt8cw4o" path="res://assets/environment/back.png" id="2_8kvgk"]
 [ext_resource type="TileSet" uid="uid://dn505hopwb4de" path="res://assets/tilesets/tiles_items.tres" id="2_o7a6f"]
 [ext_resource type="TileSet" uid="uid://blhd0ogpuydej" path="res://assets/tilesets/tiles_spikes.tres" id="3_exesn"]
+[ext_resource type="Texture2D" uid="uid://dyi3ivy26guf5" path="res://assets/environment/middle.png" id="3_ycc68"]
 [ext_resource type="PackedScene" uid="uid://ct8mp2rqnbcbs" path="res://player/player.tscn" id="5_8kvgk"]
 
 [node name="LevelBase" type="Node2D" unique_id=1174803514]
 script = ExtResource("1_exesn")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=2030006136]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1988068369]
+motion_scale = Vector2(0.2, 1)
+motion_mirroring = Vector2(576, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=898273169]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_8kvgk")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=67341134]
+motion_scale = Vector2(0.6, 1)
+motion_mirroring = Vector2(880, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" unique_id=1504485546]
+texture_repeat = 3
+position = Vector2(560, 334)
+texture = ExtResource("3_ycc68")
+region_enabled = true
+region_rect = Rect2(0, 0, 880, 368)
 
 [node name="World" type="TileMapLayer" parent="." unique_id=757070156]
 tile_set = ExtResource("1_sq5o2")

@@ -20,7 +20,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_yw30f"]
 resource_name = "hurt"
-length = 0.19999999999999998
+length = 0.2
 loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
@@ -141,3 +141,4 @@ shape = SubResource("RectangleShape2D_7ilvu")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2073325176]
 zoom = Vector2(2.5, 2.5)
+limit_top = 0
