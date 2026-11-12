@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://j0jbjthgw47e"]
+
+[ext_resource type="Script" uid="uid://dm2gcbroehrlt" path="res://UI/hud.gd" id="1_2o5uh"]
+[ext_resource type="FontFile" uid="uid://bsbkdxbsnif1e" path="res://assets/Kenney Thick.ttf" id="2_b1lf8"]
+[ext_resource type="Texture2D" uid="uid://sm1caqp2wjbr" path="res://assets/heart.png" id="3_rnl6m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7ilvu"]
+font = ExtResource("2_b1lf8")
+font_size = 48
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[node name="HUD" type="MarginContainer" unique_id=640369504]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 20
+script = ExtResource("1_2o5uh")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1423340776]
+layout_mode = 2
+
+[node name="Score" type="Label" parent="HBoxContainer" unique_id=1752340839]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "100"
+label_settings = SubResource("LabelSettings_7ilvu")
+
+[node name="LifeCounter" type="HBoxContainer" parent="HBoxContainer" unique_id=881602337]
+layout_mode = 2
+
+[node name="L1" type="TextureRect" parent="HBoxContainer/LifeCounter" unique_id=1264211356]
+layout_mode = 2
+texture = ExtResource("3_rnl6m")
+stretch_mode = 5
+
+[node name="L2" type="TextureRect" parent="HBoxContainer/LifeCounter" unique_id=1481109089]
+layout_mode = 2
+texture = ExtResource("3_rnl6m")
+stretch_mode = 5
+
+[node name="L3" type="TextureRect" parent="HBoxContainer/LifeCounter" unique_id=695891274]
+layout_mode = 2
+texture = ExtResource("3_rnl6m")
+stretch_mode = 5
+
+[node name="L4" type="TextureRect" parent="HBoxContainer/LifeCounter" unique_id=1630623280]
+layout_mode = 2
+texture = ExtResource("3_rnl6m")
+stretch_mode = 5
+
+[node name="L5" type="TextureRect" parent="HBoxContainer/LifeCounter" unique_id=155226984]
+layout_mode = 2
+texture = ExtResource("3_rnl6m")
+stretch_mode = 5

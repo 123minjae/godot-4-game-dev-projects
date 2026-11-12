@@ -5,10 +5,12 @@ var item_scene = load("res://items/item.tscn")
 var score = 0:set = set_score
 
 func _ready() -> void:
+	score = 0
 	$Items.hide()
 	$Player.reset($SpawnPoint.position)
 	set_camera_limits()
 	spawn_items()
+	
 	
 func set_camera_limits():
 	var map_size = $World.get_used_rect()
@@ -32,3 +34,7 @@ func _on_item_picked_up():
 func set_score(value):
 	score = value
 	score_changed.emit(score)
+
+
+func _on_player_died() -> void:
+	GameState.restart()
