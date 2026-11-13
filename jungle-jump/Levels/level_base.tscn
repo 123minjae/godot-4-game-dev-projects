@@ -8,6 +8,8 @@
 [ext_resource type="TileSet" uid="uid://blhd0ogpuydej" path="res://assets/tilesets/tiles_spikes.tres" id="3_exesn"]
 [ext_resource type="Texture2D" uid="uid://dyi3ivy26guf5" path="res://assets/environment/middle.png" id="3_ycc68"]
 [ext_resource type="PackedScene" uid="uid://ct8mp2rqnbcbs" path="res://player/player.tscn" id="5_8kvgk"]
+[ext_resource type="AudioStream" uid="uid://dw6lub8b4hto" path="res://assets/audio/pickup2.ogg" id="9_7n0l5"]
+[ext_resource type="AudioStream" uid="uid://cfd2p8u7e6vv7" path="res://assets/audio/Grasslands Theme.ogg" id="10_5x0yr"]
 
 [node name="LevelBase" type="Node2D" unique_id=1174803514]
 script = ExtResource("1_exesn")
@@ -51,6 +53,13 @@ tile_set = ExtResource("3_exesn")
 [node name="Player" parent="." unique_id=2074386318 instance=ExtResource("5_8kvgk")]
 
 [node name="SpawnPoint" type="Marker2D" parent="." unique_id=1731781762]
+
+[node name="EarnItemSound" type="AudioStreamPlayer" parent="." unique_id=740778405]
+stream = ExtResource("9_7n0l5")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1653169984]
+stream = ExtResource("10_5x0yr")
+autoplay = true
 
 [connection signal="score_changed" from="." to="CanvasLayer/HUD" method="update_score"]
 [connection signal="died" from="Player" to="." method="_on_player_died"]

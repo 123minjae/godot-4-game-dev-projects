@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://de7sbq8be8stq" path="res://UI/title.gd" id="1_s15np"]
 [ext_resource type="Texture2D" uid="uid://dyi3ivy26guf5" path="res://assets/environment/middle.png" id="2_jgd3k"]
 [ext_resource type="FontFile" uid="uid://bsbkdxbsnif1e" path="res://assets/Kenney Thick.ttf" id="3_jgd3k"]
+[ext_resource type="AudioStream" uid="uid://kvfy8joqcq2m" path="res://assets/audio/Intro Theme.ogg" id="5_cb2bp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7ilvu"]
 font = ExtResource("3_jgd3k")
@@ -190,3 +191,7 @@ label_settings = SubResource("LabelSettings_7c6p8")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1064789283]
 libraries/ = SubResource("AnimationLibrary_fhifq")
 autoplay = &"intro"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1759232323]
+stream = ExtResource("5_cb2bp")
+autoplay = true

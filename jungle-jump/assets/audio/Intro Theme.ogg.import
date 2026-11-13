@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/Intro Theme.ogg-9e1e5f7ae3742dfb3ff1f499c7d7a
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

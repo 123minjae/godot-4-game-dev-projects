@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://btvqb7rrc1knv" path="res://enemies/enemy.gd" id="1_7frlh"]
 [ext_resource type="Texture2D" uid="uid://brc48ip652lk8" path="res://assets/sprites/opossum.png" id="1_fw1ev"]
 [ext_resource type="Texture2D" uid="uid://bwr7kvhvs78ww" path="res://assets/sprites/enemy-death.png" id="3_orwns"]
+[ext_resource type="AudioStream" uid="uid://cmhhnievoy5ns" path="res://assets/audio/enemy_hit.ogg" id="4_a6vjd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x4ssu"]
 size = Vector2(22, 17)
@@ -116,5 +117,8 @@ shape = SubResource("RectangleShape2D_x4ssu")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=657344142]
 libraries/ = SubResource("AnimationLibrary_orwns")
 autoplay = &"walk"
+
+[node name="HitSound" type="AudioStreamPlayer" parent="." unique_id=1010741835]
+stream = ExtResource("4_a6vjd")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

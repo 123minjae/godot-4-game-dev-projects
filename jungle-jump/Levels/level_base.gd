@@ -39,6 +39,7 @@ func spawn_items():
 
 func _on_item_picked_up():
 	score+=1
+	$EarnItemSound.play()
 	
 func set_score(value):
 	score = value
