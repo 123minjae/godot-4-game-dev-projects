@@ -12,6 +12,7 @@ func _ready() -> void:
 	$Player.reset($SpawnPoint.position)
 	set_camera_limits()
 	spawn_items()
+	create_ladders()
 	
 	
 func set_camera_limits():
@@ -50,3 +51,23 @@ func _on_door_entered(body):
 
 func _on_player_died() -> void:
 	GameState.restart()
+
+
+func _on_ladders_body_entered(body: Node2D) -> void:
+	body.is_on_ladder = true
+
+
+func _on_ladders_body_exited(body: Node2D) -> void:
+	body.is_on_ladder = false
+	
+func create_ladders():
+	var cells = $World.get_used_cells()
+	for cell in cells:
+		var data  = $World.get_cell_tile_data(cell)
+		if data.get_custom_data("special") == "ladder":
+			var c = CollisionShape2D.new()
+			$Ladders.add_child(c)
+			c.position = $World.map_to_local(cell)
+			var s = RectangleShape2D.new()
+			s.size = Vector2(8,16)
+			c.shape = s

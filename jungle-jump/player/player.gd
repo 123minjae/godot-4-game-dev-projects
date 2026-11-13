@@ -14,8 +14,11 @@ func set_life(value):
 @export var run_speed = 150
 @export var jump_speed = -300
 
-enum {IDLE, RUN, JUMP, HURT, DEAD}
+enum {IDLE, RUN, JUMP, HURT, DEAD, CLIMB}
 var state = IDLE
+
+@export var climb_speed = 50
+var is_on_ladder = false
 
 @export var max_jumps = 2
 @export var double_jump_factor = 1.5
@@ -42,6 +45,8 @@ func change_state(new_state):
 		JUMP:
 			$AnimationPlayer.play("jump_up")
 			jump_count = 1
+		CLIMB:
+			$AnimationPlayer.play("climb")
 		DEAD:
 			hide()
 			
@@ -52,6 +57,24 @@ func get_input():
 	var right = Input.is_action_pressed("right")
 	var left = Input.is_action_pressed("left")
 	var jump = Input.is_action_just_pressed("jump")
+	
+	var up = Input.is_action_pressed("up")
+	var down = Input.is_action_pressed("down")
+	
+	if up and state!= CLIMB and is_on_ladder:
+		change_state(CLIMB)
+	if state == CLIMB:
+		if up:
+			velocity.y = -climb_speed
+			$AnimationPlayer.play("climb")
+		elif down:
+			velocity.y = climb_speed
+			$AnimationPlayer.play("climb")
+		else:
+			velocity.y = 0
+			$AnimationPlayer.stop()
+	if state == CLIMB and not is_on_ladder:
+		change_state(IDLE)
 	
 	velocity.x = 0
 	if right:
@@ -82,7 +105,9 @@ func get_input():
 		change_state(JUMP)
 		
 func _physics_process(delta: float) -> void:
-	velocity.y += gravity * delta
+	if state != CLIMB:
+		velocity.y += gravity * delta
+		
 	get_input()
 	
 	move_and_slide()
