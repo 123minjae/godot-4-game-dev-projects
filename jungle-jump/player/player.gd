@@ -17,6 +17,11 @@ func set_life(value):
 enum {IDLE, RUN, JUMP, HURT, DEAD}
 var state = IDLE
 
+@export var max_jumps = 2
+@export var double_jump_factor = 1.5
+
+var jump_count = 0
+
 func _ready() -> void:
 	change_state(IDLE)
 	
@@ -36,6 +41,7 @@ func change_state(new_state):
 			change_state(IDLE)
 		JUMP:
 			$AnimationPlayer.play("jump_up")
+			jump_count = 1
 		DEAD:
 			hide()
 			
@@ -54,11 +60,19 @@ func get_input():
 	if left:
 		velocity.x -= run_speed
 		$Sprite2D.flip_h = true
-	
+		
+	if jump and state == JUMP and jump_count < max_jumps and jump_count>0:
+		$JumpSound.play()
+		$AnimationPlayer.play("jump_up")
+		velocity.y = jump_speed / double_jump_factor
+		jump_count += 1
+		
 	if jump and is_on_floor():
 		change_state(JUMP)
 		velocity.y = jump_speed
 		$JumpSound.play()
+	
+	
 		
 	if state == IDLE and velocity.x != 0:
 		change_state(RUN)
@@ -87,6 +101,7 @@ func _physics_process(delta: float) -> void:
 	
 	if state == JUMP and is_on_floor():
 		change_state(IDLE)
+		jump_count = 0
 	if state == JUMP and velocity.y > 0:
 		$AnimationPlayer.play("jump_down")
 		
