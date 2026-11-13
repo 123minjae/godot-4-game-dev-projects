@@ -121,6 +121,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ilvu"]
 size = Vector2(10, 22)
 
+[sub_resource type="Gradient" id="Gradient_7ilvu"]
+colors = PackedColorArray(0.8235294, 0.7058824, 0.54901963, 1, 0.8235294, 0.7058824, 0.54901963, 0)
+
 [node name="Player" type="CharacterBody2D" unique_id=2074386318]
 collision_layer = 2
 collision_mask = 13
@@ -150,3 +153,18 @@ stream = ExtResource("3_yw30f")
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="." unique_id=1449510277]
 stream = ExtResource("4_qjkh3")
+
+[node name="Dust" type="CPUParticles2D" parent="." unique_id=1835028309]
+position = Vector2(-2, 0)
+rotation = -1.5707964
+emitting = false
+amount = 20
+lifetime = 0.45
+one_shot = true
+speed_scale = 2.0
+emission_shape = 3
+emission_rect_extents = Vector2(1, 6)
+gravity = Vector2(0, 0)
+initial_velocity_max = 10.0
+scale_amount_max = 3.0
+color_ramp = SubResource("Gradient_7ilvu")
