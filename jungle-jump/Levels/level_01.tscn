@@ -19,7 +19,7 @@ tile_map_data = PackedByteArray("AAAtAA8AAAAAAAAAAAA2AA8AAQAAAAAAAAA5AA8AAQAAAAA
 position = Vector2(316, 237)
 
 [node name="Player" parent="." index="7" unique_id=2074386318]
-position = Vector2(562, 241)
+position = Vector2(576, 256)
 
 [node name="SpawnPoint" parent="." index="8" unique_id=1731781762]
-position = Vector2(568, 238)
+position = Vector2(576, 251)
