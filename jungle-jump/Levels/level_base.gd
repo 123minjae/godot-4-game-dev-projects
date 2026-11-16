@@ -38,9 +38,13 @@ func spawn_items():
 			item.picked_up.connect(self._on_item_picked_up)
 		
 
-func _on_item_picked_up():
-	score+=1
+func _on_item_picked_up(type):
 	$EarnItemSound.play()
+	match type:
+		"gem":
+			score += 1
+		"cherry":
+			$Player.life = min($Player.life + 1, 3)
 	
 func set_score(value):
 	score = value

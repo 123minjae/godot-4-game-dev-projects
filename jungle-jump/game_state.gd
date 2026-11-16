@@ -6,11 +6,15 @@ var current_level = 0
 var game_scene = "res://main.tscn"
 var title_screen = "res://UI/title.tscn"
 
+func next_level():
+	if ScreenFade.busy:
+		return
+	current_level += 1
+	if current_level <= num_levels:
+		ScreenFade.change_scene(game_scene)
+	else:
+		restart()
+
 func restart():
 	current_level = 0
-	get_tree().change_scene_to_file(title_screen)
-	
-func next_level():
-	current_level+=1
-	if current_level <= num_levels:
-		get_tree().change_scene_to_file(game_scene)
+	ScreenFade.change_scene(title_screen)

@@ -1,0 +1,197 @@
+[gd_scene format=3 uid="uid://d1b6e0ipqnvak"]
+
+[ext_resource type="Texture2D" uid="uid://b2fsl1kt8cw4o" path="res://assets/environment/back.png" id="1_pa5mj"]
+[ext_resource type="Script" uid="uid://de7sbq8be8stq" path="res://UI/title.gd" id="1_s15np"]
+[ext_resource type="Texture2D" uid="uid://dyi3ivy26guf5" path="res://assets/environment/middle.png" id="2_jgd3k"]
+[ext_resource type="FontFile" uid="uid://bsbkdxbsnif1e" path="res://assets/Kenney Thick.ttf" id="3_jgd3k"]
+[ext_resource type="AudioStream" uid="uid://kvfy8joqcq2m" path="res://assets/audio/Intro Theme.ogg" id="5_cb2bp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7ilvu"]
+font = ExtResource("3_jgd3k")
+font_size = 72
+outline_size = 18
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7c6p8"]
+font = ExtResource("3_jgd3k")
+font_size = 48
+outline_size = 18
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_s15np"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(216, 283.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Message:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cb2bp"]
+resource_name = "intro"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(216, -100), Vector2(216, 283.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Message:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fhifq"]
+_data = {
+&"RESET": SubResource("Animation_s15np"),
+&"intro": SubResource("Animation_cb2bp")
+}
+
+[node name="Title" type="Control" unique_id=2123473696]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s15np")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1705331395]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_pa5mj")
+stretch_mode = 6
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1624411815]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = -75.0
+offset_top = 301.0
+offset_right = 1248.0
+offset_bottom = 669.0
+texture = ExtResource("2_jgd3k")
+stretch_mode = 1
+
+[node name="Title" type="Label" parent="." unique_id=444687644]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -40.5
+offset_right = 360.0
+offset_bottom = 40.50003
+grow_horizontal = 2
+grow_vertical = 2
+text = "Jungle Jump"
+label_settings = SubResource("LabelSettings_7ilvu")
+
+[node name="Message" type="Label" parent="." unique_id=645024617]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -417.0
+offset_top = -54.0
+offset_right = 417.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Press Space to Play"
+label_settings = SubResource("LabelSettings_7c6p8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1064789283]
+libraries/ = SubResource("AnimationLibrary_fhifq")
+autoplay = &"intro"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1759232323]
+stream = ExtResource("5_cb2bp")
+autoplay = true
