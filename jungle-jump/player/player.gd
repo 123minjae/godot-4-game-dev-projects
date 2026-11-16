@@ -48,6 +48,7 @@ func change_state(new_state):
 		CLIMB:
 			$AnimationPlayer.play("climb")
 		DEAD:
+			died.emit()
 			hide()
 			
 func get_input():

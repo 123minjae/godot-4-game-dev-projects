@@ -17,9 +17,10 @@ func _physics_process(delta: float) -> void:
 		var collision = get_slide_collision(i)
 		if collision.get_collider().name == "Player":
 			collision.get_collider().hurt()
-		if is_on_wall():
-			set_facing(int(sign(get_wall_normal().x)))
-			velocity.y = -100
+
+	if is_on_wall():
+		set_facing(int(sign(get_wall_normal().x)))
+		velocity.y = -100
 
 	if is_on_floor() and not $RayCast2D.is_colliding():
 		set_facing(-facing)
