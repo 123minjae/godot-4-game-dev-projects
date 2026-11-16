@@ -5,6 +5,9 @@ extends CharacterBody2D
 
 var facing = 1
 
+func _ready():
+	set_facing(facing)
+
 func _physics_process(delta: float) -> void:
 	velocity.y += gravity * delta
 	velocity.x = facing * speed
@@ -14,12 +17,20 @@ func _physics_process(delta: float) -> void:
 		var collision = get_slide_collision(i)
 		if collision.get_collider().name == "Player":
 			collision.get_collider().hurt()
-		if collision.get_normal().x != 0:
-			facing = sign(collision.get_normal().x)
+		if is_on_wall():
+			set_facing(int(sign(get_wall_normal().x)))
 			velocity.y = -100
+
+	if is_on_floor() and not $RayCast2D.is_colliding():
+		set_facing(-facing)
 
 	if position.y > 10000:
 		queue_free()
+
+func set_facing(dir: int):
+	facing = dir
+	$Sprite2D.flip_h = facing > 0
+	$RayCast2D.position.x = abs($RayCast2D.position.x) * facing
 
 func take_damage():
 	$HitSound.play()

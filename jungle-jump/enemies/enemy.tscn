@@ -121,4 +121,8 @@ autoplay = &"walk"
 [node name="HitSound" type="AudioStreamPlayer" parent="." unique_id=1010741835]
 stream = ExtResource("4_a6vjd")
 
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1980623008]
+position = Vector2(12, 0)
+target_position = Vector2(0, 30)
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
