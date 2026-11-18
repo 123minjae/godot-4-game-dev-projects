@@ -1,5 +1,7 @@
 extends Node3D
 
+@export var next_hole : PackedScene
+
 enum {AIM, SET_POWER, SHOOT, WIN}
 
 @export var power_speed = 100
@@ -36,6 +38,9 @@ func change_state(new_state):
 			$Ball.hide()
 			$Arrow.hide()
 			$UI.show_message("Win!")
+			await get_tree().create_timer(1).timeout
+			if next_hole:
+				get_tree().change_scene_to_packed(next_hole)
 			
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel") and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dl7fsp2cncb47"]
+
+[ext_resource type="PackedScene" uid="uid://guhu2quc34po" path="res://hole.tscn" id="1_uxh6m"]
+
+[node name="Hole_02" unique_id=1549795447 instance=ExtResource("1_uxh6m")]
+
+[node name="GridMap" parent="." index="3" unique_id=930130507]
+data = {
+"cells": PackedInt32Array(0, 5, 22, 0, 4, 24, 0, 3, 24, 0, 2, 25, 0, 1, 3, 1, 1, 655363, 1, 0, 655384, 1, 65535, 655391, 1, 65534, 655371)
+}
+
+[node name="Area3D" parent="." index="4" unique_id=900092649]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8757306, 0, 0)
+
+[node name="CollisionShape3D" parent="Area3D" index="0" unique_id=1051084729]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.376427, 0.36526185, -1.4965298)
+
+[node name="Tee" parent="." index="5" unique_id=1952636168]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52605426, 0.68236554, 5.3879495)

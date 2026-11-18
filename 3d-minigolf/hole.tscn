@@ -44,9 +44,6 @@ directional_shadow_max_distance = 40.0
 mesh_library = ExtResource("1_ln22a")
 physics_material = SubResource("PhysicsMaterial_4igv2")
 cell_size = Vector3(1, 1, 1)
-data = {
-"cells": PackedInt32Array(0, 3, 22, 0, 2, 24, 0, 1, 24, 0, 0, 24, 0, 65535, 24, 0, 65534, 15, 65535, 65534, 1441801, 0, 65533, 655369, 1, 65534, 1048600, 2, 65534, 1048600, 3, 65534, 1048577)
-}
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="Area3D" type="Area3D" parent="." unique_id=900092649]
