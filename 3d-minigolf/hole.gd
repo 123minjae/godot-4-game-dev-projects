@@ -61,6 +61,8 @@ func _process(delta: float) -> void:
 			animate_power(delta)
 		SHOOT:
 			pass
+	if state != WIN:
+		$CameraGimbal.position = $Ball.position
 			
 func animate_arrow(delta):
 	$Arrow.rotation.y += angle_speed * angle_change * delta
