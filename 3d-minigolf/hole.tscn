@@ -2,6 +2,7 @@
 
 [ext_resource type="MeshLibrary" uid="uid://g7rie4nh5rkf" path="res://assets/golf_tiles.tres" id="1_ln22a"]
 [ext_resource type="PackedScene" uid="uid://di6ne6w43n35c" path="res://ball.tscn" id="2_1s0jb"]
+[ext_resource type="PackedScene" uid="uid://br6ouavy5kl11" path="res://arrow.tscn" id="3_cki6r"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ln22a"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -56,3 +57,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52605426, 0.68236554, 3.377
 
 [node name="Ball" parent="." unique_id=1232686423 instance=ExtResource("2_1s0jb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.47620928, 1.6173818, 3.3775387)
+
+[node name="Arrow" parent="." unique_id=1189926531 instance=ExtResource("3_cki6r")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.47620928, 1.6173818, 3.3775387)
