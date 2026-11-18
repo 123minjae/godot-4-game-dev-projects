@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b7ew6sagqa2ho"]
 
+[ext_resource type="Script" uid="uid://c1mthvx3j05i6" path="res://ui.gd" id="1_27fn8"]
 [ext_resource type="FontFile" uid="uid://doixtw1rqgbbq" path="res://assets/Xolonium-Regular.ttf" id="1_m6e0p"]
 [ext_resource type="Texture2D" uid="uid://cc8r3eg53weac" path="res://assets/bar_green.png" id="2_27fn8"]
 
@@ -12,6 +13,7 @@ font = ExtResource("1_m6e0p")
 font_size = 30
 
 [node name="UI" type="CanvasLayer" unique_id=33558311]
+script = ExtResource("1_27fn8")
 
 [node name="Message" type="Label" parent="." unique_id=1845212775]
 visible = false
