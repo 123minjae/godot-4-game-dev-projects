@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://guhu2quc34po"]
 
+[ext_resource type="PackedScene" uid="uid://b7ew6sagqa2ho" path="res://ui.tscn" id="1_aqv4r"]
 [ext_resource type="MeshLibrary" uid="uid://g7rie4nh5rkf" path="res://assets/golf_tiles.tres" id="1_ln22a"]
 [ext_resource type="PackedScene" uid="uid://di6ne6w43n35c" path="res://ball.tscn" id="2_1s0jb"]
 [ext_resource type="PackedScene" uid="uid://br6ouavy5kl11" path="res://arrow.tscn" id="3_cki6r"]
@@ -25,6 +26,8 @@ height = 0.25
 radius = 0.08
 
 [node name="Hole" type="Node3D" unique_id=1549795447]
+
+[node name="UI" parent="." unique_id=33558311 instance=ExtResource("1_aqv4r")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1675665530]
 environment = SubResource("Environment_cki6r")
