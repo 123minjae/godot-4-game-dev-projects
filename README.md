@@ -10,6 +10,7 @@ Unity 경험을 바탕으로 Godot의 노드·시그널·물리·UI 구조를 �
 | 엔진 | Godot 4.7.2 (책 기준은 4.0 — API 차이는 공식 문서 기준으로 수정) |
 | 언어 | GDScript |
 | 렌더러 | Forward+ |
+| 3D 물리 | Jolt Physics (4.6부터 새 프로젝트 기본값) |
 | 에셋 | 책 공식 저장소 제공 에셋 (아래 크레딧 참고) |
 
 ## 저장소 구조
@@ -20,6 +21,8 @@ Unity 경험을 바탕으로 Godot의 노드·시그널·물리·UI 구조를 �
 .
 ├── coin-dash/      2장 Coin Dash
 ├── space-rocks/    3장 Space Rocks
+├── jungle-jump/    4장 Jungle Jump
+├── 3d-minigolf/    5장 3D Minigolf
 └── (이후 챕터 추가 예정)
 ```
 
@@ -31,9 +34,11 @@ Unity 경험을 바탕으로 Godot의 노드·시그널·물리·UI 구조를 �
 |---|---|---|---|---|
 | 2 | Coin Dash | 2D 기초 — Area2D, 시그널, Tween, HUD | ✅ | ✅ |
 | 3 | Space Rocks | 2D 물리 — RigidBody2D, 상태 머신, Path2D, 파티클 | ✅ | ✅ |
-| 4 | Jungle Jump | 2D 플랫포머 — CharacterBody2D, TileMap | ⬜ | ⬜ |
-| 5 | 3D Minigolf | 3D 기초 | ⬜ | ⬜ |
+| 4 | Jungle Jump | 2D 플랫포머 — CharacterBody2D, TileMapLayer, 씬 전환 | ✅ | ✅ |
+| 5 | 3D Minigolf | 3D 기초 — GridMap, RigidBody3D, 짐벌 카메라, 상속 씬 | ✅ | ➖ |
 | 6 | Infinite Flyer | 3D 무한 러너 | ⬜ | ⬜ |
+
+➖ 짧은 챕터라 Playground는 생략
 
 ## 작업 방식
 
@@ -62,6 +67,17 @@ Unity 경험을 바탕으로 Godot의 노드·시그널·물리·UI 구조를 �
 - 플레이어 화면 wrap에 반지름 여유 추가
 - 엔진음 루프 설정(Loop + 오프셋), 클리핑 방지를 위해 볼륨 조정. 루프 접합부의 미세한 끊김은 에셋 꼬리 페이드아웃이 원인으로 확인했으나 에셋 수정은 범위 밖으로 두고 마무리
 
+**4장 Jungle Jump**
+- 책의 TileMap(4.0)을 4.3+의 `TileMapLayer` 노드 여러 개로 치환해 구현
+- `ScreenFade` Autoload(CanvasLayer + ColorRect + Tween)로 씬 전환 페이드
+- 타이틀 화면: Parallax2D autoscroll 배경, "Press Space" 문구 SINE 알파 깜빡임
+- `MovingPlatform`에 `@tool` + `_draw()`로 에디터에서 이동 범위 기즈모 표시
+- 적: RayCast2D로 낭떠러지 감지, `is_on_wall()`/`get_wall_normal()`로 벽에서 방향 전환
+- 공식 코드 대조 누락 수정: 마지막 레벨 뒤 `restart()`, 사망 시 `died.emit()`
+
+**5장 3D Minigolf**
+- Playground 생략. 남은 개선 후보는 조준 시작 방향, 가끔 공이 튀는 현상(GridMap 옥턴트 경계로 추정)
+
 ## 실행
 
 1. Godot 4.7 이상 설치
@@ -77,3 +93,4 @@ Unity 경험을 바탕으로 Godot의 노드·시그널·물리·UI 구조를 �
 
 게임 에셋은 책 공식 저장소에서 제공하는 것을 사용했습니다. 각 프로젝트의 `assets/attributions.txt`에 원작자 표기가 있습니다.
 - Space Rocks: *Flying Saucers* by [surt](https://opengameart.org/users/surt), *Funky Gameplay* by Eric Matyas ([soundimage.org](https://soundimage.org))
+- Jungle Jump: 사운드 by [revampedpro](http://opengameart.org/users/revampedpro)
