@@ -34,7 +34,7 @@ func add_buildings():
 			
 func add_center_buildings():
 	if level>0:
-		for z in range(0,-200,-10):
+		for z in range(0,-200,-20):
 			if randf() > 0.8:
 				var nb = buildings[0].instantiate()
 				add_child(nb)
@@ -43,7 +43,7 @@ func add_center_buildings():
 				nb. rotation.y = PI/2
 
 func add_rings():
-	for z in range(0,-200,-20):
+	for z in range(0,-200,-10):
 		if randf() > 0.76:
 			var nr = ring.instantiate()
 			nr.position.z = z

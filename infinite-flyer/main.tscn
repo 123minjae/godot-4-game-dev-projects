@@ -33,5 +33,6 @@ target_path = NodePath("../Plane")
 offset = Vector3(7, 7, 15)
 
 [node name="Plane" parent="." unique_id=1305573308 instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 
 [node name="Chunk" parent="." unique_id=500209429 instance=ExtResource("4_1bvp3")]
