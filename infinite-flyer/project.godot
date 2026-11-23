@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Infinite_Flyer"
-run/main_scene="uid://e4b0j2hyfqbr"
+run/main_scene="uid://cy0oivok3878y"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
