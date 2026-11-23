@@ -11,6 +11,7 @@ radius = 1.0
 size = Vector3(7, 1, 1)
 
 [node name="Plane" type="CharacterBody3D" unique_id=1305573308]
+collision_layer = 2
 script = ExtResource("1_dpar4")
 
 [node name="cartoon_plane" parent="." unique_id=695059171 instance=ExtResource("1_s46f0")]
