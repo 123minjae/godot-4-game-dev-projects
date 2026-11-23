@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://7empwf60kxns"]
+
+[ext_resource type="Script" uid="uid://dn20k6pla7sa3" path="res://plane.gd" id="1_dpar4"]
+[ext_resource type="PackedScene" uid="uid://b3is2awwn2njx" path="res://assets/cartoon_plane.glb" id="1_s46f0"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7ilvu"]
+height = 4.5
+radius = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ilvu"]
+size = Vector3(7, 1, 1)
+
+[node name="Plane" type="CharacterBody3D" unique_id=1305573308]
+script = ExtResource("1_dpar4")
+
+[node name="cartoon_plane" parent="." unique_id=695059171 instance=ExtResource("1_s46f0")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="Propeller" parent="cartoon_plane" index="4" unique_id=594981960]
+transform = Transform3D(-0.11498524, 0.9933672, 0, -0.9933672, -0.11498524, 0, 0, 0, 1, 0, 0, 1.7987282)
+
+[node name="AnimationPlayer" parent="cartoon_plane" index="6" unique_id=1820632980]
+autoplay = &"prop_spin"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=954745079]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1.0927845e-08, -0.25)
+shape = SubResource("CylinderShape3D_7ilvu")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1275210533]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+shape = SubResource("BoxShape3D_7ilvu")
+
+[editable path="cartoon_plane"]
