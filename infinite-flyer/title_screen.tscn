@@ -11,6 +11,10 @@
 font = ExtResource("5_013yr")
 font_size = 128
 
+[sub_resource type="LabelSettings" id="LabelSettings_tpml5"]
+font = ExtResource("5_013yr")
+font_size = 40
+
 [node name="TitleScreen" type="Control" unique_id=655731718]
 layout_mode = 3
 anchors_preset = 15
@@ -64,5 +68,20 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Infinite Flyer"
 label_settings = SubResource("LabelSettings_v6p8y")
+
+[node name="HighScore" type="Label" parent="." unique_id=920278717]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -118.0
+offset_top = -63.0
+offset_right = 118.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "High Score : 0"
+label_settings = SubResource("LabelSettings_tpml5")
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

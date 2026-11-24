@@ -53,6 +53,11 @@ func set_score(value):
 
 func die():
 	set_physics_process(false)
+	
+	if score > Global.high_score:
+		Global.high_score = score
+		Global.save_score()
+	
 	$cartoon_plane.hide()
 	$Explosion.show()
 	$Explosion.play("default")
@@ -60,4 +65,6 @@ func die():
 	await $Explosion.animation_finished
 	$Explosion.hide()
 	dead.emit()
+	
+	
 	
