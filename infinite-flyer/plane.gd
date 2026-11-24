@@ -59,4 +59,4 @@ func die():
 	await $Explosion.animation_finished
 	$Explosion.hide()
 	dead.emit()
-	get_tree().reload_current_scene()
+	

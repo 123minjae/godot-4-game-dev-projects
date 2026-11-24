@@ -14,3 +14,7 @@ func _process(delta: float) -> void:
 		new_chunk.level = num_chunks / 4
 		add_child(new_chunk)
 		max_position -= chunk_size
+
+
+func _on_plane_dead() -> void:
+	get_tree().change_scene_to_file("res://title_screen.tscn")

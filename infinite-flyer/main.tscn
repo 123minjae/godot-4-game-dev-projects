@@ -40,5 +40,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 
 [node name="UI" parent="." unique_id=677454086 instance=ExtResource("6_7mycd")]
 
+[connection signal="dead" from="Plane" to="." method="_on_plane_dead"]
 [connection signal="fuel_changed" from="Plane" to="UI" method="update_fuel"]
 [connection signal="score_changed" from="Plane" to="UI" method="update_score"]
