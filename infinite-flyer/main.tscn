@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://7empwf60kxns" path="res://plane.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://b5jw74pjq4pjr" path="res://chunk.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://b7e56c4s424ow" path="res://ui.tscn" id="6_7mycd"]
+[ext_resource type="AudioStream" uid="uid://dcojs40c61hnq" path="res://assets/audio/Riverside Ride Short Loop.wav" id="7_272bh"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7dm0k"]
 panorama = ExtResource("1_ig7tw")
@@ -39,6 +40,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 [node name="Chunk" parent="." unique_id=500209429 instance=ExtResource("4_1bvp3")]
 
 [node name="UI" parent="." unique_id=677454086 instance=ExtResource("6_7mycd")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1981735355]
+stream = ExtResource("7_272bh")
+autoplay = true
 
 [connection signal="dead" from="Plane" to="." method="_on_plane_dead"]
 [connection signal="fuel_changed" from="Plane" to="UI" method="update_fuel"]

@@ -22,6 +22,7 @@ func _ready() -> void:
 		
 func _on_body_entered(body: Node3D) -> void:
 	$CollisionShape3D/MeshInstance3D.hide()
+	$EarnSound.play()
 	var d = global_position.distance_to(body.global_position)
 	if d < 2.0:
 		$Label3D.text = "200"

@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dq0pb6pxh5m5r" path="res://assets/smoke/smoke_03.png" id="5_gwo5b"]
 [ext_resource type="Texture2D" uid="uid://dde5u8wujsa7g" path="res://assets/smoke/smoke_04.png" id="6_ye4pl"]
 [ext_resource type="Texture2D" uid="uid://b5c50ygqcr3hb" path="res://assets/smoke/smoke_05.png" id="7_a6rsd"]
+[ext_resource type="AudioStream" uid="uid://bfjah2mfqf2mv" path="res://assets/audio/impact.wav" id="8_afyqo"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_7ilvu"]
 height = 4.5
@@ -64,5 +65,8 @@ visible = false
 pixel_size = 0.5
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_7ilvu")
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="." unique_id=115449955]
+stream = ExtResource("8_afyqo")
 
 [editable path="cartoon_plane"]

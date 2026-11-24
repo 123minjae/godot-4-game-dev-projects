@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dl2ldh7e36ve3" path="res://ring.gd" id="1_jpbn5"]
 [ext_resource type="Texture2D" uid="uid://ykp6ucxcok41" path="res://assets/textures/texture_09.png" id="1_ln3uk"]
 [ext_resource type="FontFile" uid="uid://dpjfbbu367ruu" path="res://assets/Baloo2-Medium.ttf" id="2_jiui3"]
+[ext_resource type="AudioStream" uid="uid://c8bbwbrnxqs64" path="res://assets/audio/three_tone.wav" id="4_c63bx"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_7ilvu"]
 height = 0.5
@@ -34,5 +35,8 @@ billboard = 1
 text = "100"
 font = ExtResource("2_jiui3")
 font_size = 720
+
+[node name="EarnSound" type="AudioStreamPlayer" parent="." unique_id=129946554]
+stream = ExtResource("4_c63bx")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -56,6 +56,7 @@ func die():
 	$cartoon_plane.hide()
 	$Explosion.show()
 	$Explosion.play("default")
+	$ExplosionSound.play()
 	await $Explosion.animation_finished
 	$Explosion.hide()
 	dead.emit()
