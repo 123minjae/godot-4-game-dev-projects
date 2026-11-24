@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+signal dead
+
 @export var pitch_speed = 1.1
 @export var roll_speed = 2.5
 @export var level_speed = 4.0
@@ -26,3 +28,16 @@ func _physics_process(delta: float) -> void:
 	velocity = -transform.basis.z * forward_speed
 	velocity += transform.basis.x * $cartoon_plane.rotation.z / deg_to_rad(45)*forward_speed/2.0
 	move_and_slide()
+	
+	if get_slide_collision_count() > 0 :
+		die()
+		
+func die():
+	set_physics_process(false)
+	$cartoon_plane.hide()
+	$Explosion.show()
+	$Explosion.play("default")
+	await $Explosion.animation_finished
+	$Explosion.hide()
+	dead.emit()
+	get_tree().reload_current_scene()
