@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://tje6dgrfy3ll" path="res://camera_3d.gd" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://7empwf60kxns" path="res://plane.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://b5jw74pjq4pjr" path="res://chunk.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://b7e56c4s424ow" path="res://ui.tscn" id="6_7mycd"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7dm0k"]
 panorama = ExtResource("1_ig7tw")
@@ -36,3 +37,8 @@ offset = Vector3(7, 7, 15)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 
 [node name="Chunk" parent="." unique_id=500209429 instance=ExtResource("4_1bvp3")]
+
+[node name="UI" parent="." unique_id=677454086 instance=ExtResource("6_7mycd")]
+
+[connection signal="fuel_changed" from="Plane" to="UI" method="update_fuel"]
+[connection signal="score_changed" from="Plane" to="UI" method="update_score"]

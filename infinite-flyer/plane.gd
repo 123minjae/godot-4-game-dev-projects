@@ -1,6 +1,8 @@
 extends CharacterBody3D
 
 signal dead
+signal score_changed
+signal fuel_changed
 
 @export var pitch_speed = 1.1
 @export var roll_speed = 2.5
@@ -10,6 +12,11 @@ signal dead
 var roll_input = 0
 var pitch_input = 0
 var max_altitude = 20
+
+@export var fuel_burn = 1.0
+var max_fuel = 10.0
+var fuel =  10.0:set = set_fuel
+var score = 0:set = set_score
 
 func get_input(delta):
 	pitch_input = Input.get_axis("pitch_down","pitch_up")
@@ -32,6 +39,18 @@ func _physics_process(delta: float) -> void:
 	if get_slide_collision_count() > 0 :
 		die()
 		
+	fuel -= fuel_burn * delta
+		
+func set_fuel(value):
+	fuel = min(value,max_fuel)
+	fuel_changed.emit(fuel)
+	if fuel < 0:
+		die()
+
+func set_score(value):
+	score = value
+	score_changed.emit(score)
+
 func die():
 	set_physics_process(false)
 	$cartoon_plane.hide()
