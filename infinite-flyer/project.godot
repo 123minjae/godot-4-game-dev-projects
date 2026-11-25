@@ -24,6 +24,10 @@ Global="*uid://bknghsqxqtogr"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[editor]
+
+movie_writer/movie_file="C:/Users/123mi/Videos/boost_test.avi"
+
 [input]
 
 pitch_up={
