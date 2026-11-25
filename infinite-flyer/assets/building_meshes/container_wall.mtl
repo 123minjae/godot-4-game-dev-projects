@@ -1,0 +1,28 @@
+newmtl c_red
+Kd 0.660 0.200 0.160
+Ka 0 0 0
+Ks 0 0 0
+d 1
+illum 1
+
+newmtl c_blue
+Kd 0.160 0.360 0.620
+Ka 0 0 0
+Ks 0 0 0
+d 1
+illum 1
+
+newmtl c_green
+Kd 0.220 0.500 0.300
+Ka 0 0 0
+Ks 0 0 0
+d 1
+illum 1
+
+newmtl c_orange
+Kd 0.860 0.500 0.140
+Ka 0 0 0
+Ks 0 0 0
+d 1
+illum 1
+

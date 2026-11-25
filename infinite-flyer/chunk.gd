@@ -8,12 +8,17 @@ var buildings = [
 	preload("res://buildings/building_5.tscn"),
 ]
 var ring = preload("res://ring.tscn")
+var obstacles = [
+	preload("res://buildings/obstacle_1.tscn"),  # 컨테이너 벽: 위로 넘기
+	preload("res://buildings/obstacle_2.tscn"),  # 육교: 아래로 지나가기
+	preload("res://buildings/obstacle_3.tscn"),  # 전봇대: 좌우로 피하기
+]
 
 var level = 0
 
 func _ready() -> void:
 	add_buildings()
-	#add_center_buildings()
+	add_center_obstacles()
 	add_rings()
 
 func _on_visible_on_screen_notifier_3d_screen_exited() -> void:
@@ -32,15 +37,18 @@ func add_buildings():
 			nb.transform.origin.x = 20 * side
 			zpos -= nb.get_node("MeshInstance3D").mesh.get_aabb().size.z
 			
-func add_center_buildings():
+func add_center_obstacles():
 	if level>0:
-		for z in range(0,-200,-20):
-			if randf() > 0.8:
-				var nb = buildings[0].instantiate()
-				add_child(nb)
-				nb.position.z = z
-				nb.position.x += 8
-				nb. rotation.y = PI/2
+		for z in range(-10, -200, -40):
+			if randf() > 0.6:
+				var idx = randi_range(0, obstacles.size() - 1)
+				var ob = obstacles[idx].instantiate()
+				add_child(ob)
+				ob.position.z = z
+				if idx == 2:
+					ob.position.x = randi_range(-10,10)
+				
+				
 
 func add_rings():
 	for z in range(0,-200,-20):
