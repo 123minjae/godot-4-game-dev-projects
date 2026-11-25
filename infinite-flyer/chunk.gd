@@ -43,11 +43,11 @@ func add_center_buildings():
 				nb. rotation.y = PI/2
 
 func add_rings():
-	for z in range(0,-200,-10):
-		if randf() > 0.76:
+	for z in range(0,-200,-20):
+		if randf() > 0.70:
 			var nr = ring.instantiate()
 			nr.position.z = z
-			nr.position.y = randf_range(3,17)
+			nr.position.y = randf_range(5,17)
 			match level:
 				0:pass
 				1:
@@ -58,4 +58,10 @@ func add_rings():
 				3:
 					nr.position.x = randf_range(-10,10)
 					nr.move_x = true
+				_:
+					nr.position.x = randf_range(-10,10)
+					if randf_range(0,1) < 0.5:
+						nr.move_x = true
+					else:
+						nr.move_y = true
 			add_child(nr)

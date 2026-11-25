@@ -42,6 +42,7 @@ animations = [{
 [node name="Plane" type="CharacterBody3D" unique_id=1305573308]
 collision_layer = 2
 script = ExtResource("1_dpar4")
+fuel_burn = 0.5
 
 [node name="cartoon_plane" parent="." unique_id=695059171 instance=ExtResource("1_s46f0")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
