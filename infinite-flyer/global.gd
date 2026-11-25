@@ -6,6 +6,7 @@ var score_file = "user://hs.dat"
 func _ready() -> void:
 	load_score()
 	
+	
 func load_score():
 	if FileAccess.file_exists(score_file):
 		var file = FileAccess.open(score_file,FileAccess.READ)

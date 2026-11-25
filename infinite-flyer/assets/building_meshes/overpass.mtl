@@ -1,0 +1,28 @@
+newmtl concrete
+Kd 0.620 0.620 0.600
+Ka 0 0 0
+Ks 0 0 0
+d 1
+illum 1
+
+newmtl rail
+Kd 0.350 0.370 0.400
+Ka 0 0 0
+Ks 0 0 0
+d 1
+illum 1
+
+newmtl board
+Kd 0.960 0.820 0.220
+Ka 0 0 0
+Ks 0 0 0
+d 1
+illum 1
+
+newmtl board_frame
+Kd 0.250 0.250 0.280
+Ka 0 0 0
+Ks 0 0 0
+d 1
+illum 1
+

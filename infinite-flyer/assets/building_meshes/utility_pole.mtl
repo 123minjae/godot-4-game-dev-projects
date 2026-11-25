@@ -1,0 +1,21 @@
+newmtl wood
+Kd 0.450 0.300 0.180
+Ka 0 0 0
+Ks 0 0 0
+d 1
+illum 1
+
+newmtl metal
+Kd 0.550 0.570 0.600
+Ka 0 0 0
+Ks 0 0 0
+d 1
+illum 1
+
+newmtl insulator
+Kd 0.900 0.900 0.850
+Ka 0 0 0
+Ks 0 0 0
+d 1
+illum 1
+

@@ -23,7 +23,7 @@ Unity 경험을 바탕으로 Godot의 노드·시그널·물리·UI 구조를 �
 ├── space-rocks/    3장 Space Rocks
 ├── jungle-jump/    4장 Jungle Jump
 ├── 3d-minigolf/    5장 3D Minigolf
-└── (이후 챕터 추가 예정)
+└── infinite-flyer/ 6장 Infinite Flyer
 ```
 
 `.godot/` 캐시와 `export_presets.cfg`는 커밋하지 않고, `.import` 파일은 커밋합니다.
@@ -36,7 +36,7 @@ Unity 경험을 바탕으로 Godot의 노드·시그널·물리·UI 구조를 �
 | 3 | Space Rocks | 2D 물리 — RigidBody2D, 상태 머신, Path2D, 파티클 | ✅ | ✅ |
 | 4 | Jungle Jump | 2D 플랫포머 — CharacterBody2D, TileMapLayer, 씬 전환 | ✅ | ✅ |
 | 5 | 3D Minigolf | 3D 기초 — GridMap, RigidBody3D, 짐벌 카메라, 상속 씬 | ✅ | ➖ |
-| 6 | Infinite Flyer | 3D 무한 러너 | ⬜ | ⬜ |
+| 6 | Infinite Flyer | 3D 무한 러너 — CharacterBody3D 비행, 청크 무한 생성, 트라이메시 충돌, CPUParticles3D | ✅ | ✅ |
 
 ➖ 짧은 챕터라 Playground는 생략
 
@@ -78,6 +78,16 @@ Unity 경험을 바탕으로 Godot의 노드·시그널·물리·UI 구조를 �
 **5장 3D Minigolf**
 - Playground 생략. 남은 개선 후보는 조준 시작 방향, 가끔 공이 튀는 현상(GridMap 옥턴트 경계로 추정)
 
+**6장 Infinite Flyer**
+- 타이틀 화면 시작 버튼을 `grab_focus()`로 Space 입력 지원
+- 청크 생성 기준선을 한 청크 앞당겨 항상 2개가 깔려 있게 (앞쪽 지형이 끊겨 보이던 문제)
+- 링 점수 판정 수정 — 공식 코드는 3D 거리로 재서 비행기 길이 때문에 200점이 사실상 불가능했음. 링 평면(XY) 거리로 바꾸고, 움직이는 링은 실제 위치(`CollisionShape3D`) 기준으로 판정
+- 레벨 4 이상에서 링이 레벨 0으로 돌아가던 문제를 `match`의 와일드카드(`_`) 분기로 처리 — 좌우/상하 이동 링이 반반 확률로 등장
+- 가운데 건물 대신 장애물 3종 추가: 컨테이너 벽(위로 넘기), 육교+광고판(아래로 지나가기), 전봇대(좌우 회피). 링과 z 칸이 겹치지 않게 배치
+- 부스트: Space로 가속(`lerpf`로 부드럽게), 부스트 중 연료 2배 소모, 꼬리 연기 파티클
+- 파티클 꼬리에 점이 남던 문제 — Particle Billboard 모드에서 Keep Scale이 꺼져 있으면 비활성 입자(크기 0)가 원래 크기로 그려지는 것이 원인. Keep Scale을 켜서 해결 (엔진 소스로 확인)
+- 링 개수·높이, 연료 소모량 등 밸런스 조정
+
 ## 실행
 
 1. Godot 4.7 이상 설치
@@ -94,3 +104,4 @@ Unity 경험을 바탕으로 Godot의 노드·시그널·물리·UI 구조를 �
 게임 에셋은 책 공식 저장소에서 제공하는 것을 사용했습니다. 각 프로젝트의 `assets/attributions.txt`에 원작자 표기가 있습니다.
 - Space Rocks: *Flying Saucers* by [surt](https://opengameart.org/users/surt), *Funky Gameplay* by Eric Matyas ([soundimage.org](https://soundimage.org))
 - Jungle Jump: 사운드 by [revampedpro](http://opengameart.org/users/revampedpro)
+- Infinite Flyer: 장애물 모델(컨테이너 벽·육교·전봇대)은 Claude로 생성한 로우폴리 OBJ

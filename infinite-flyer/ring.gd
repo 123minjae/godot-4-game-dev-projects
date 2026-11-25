@@ -23,7 +23,9 @@ func _ready() -> void:
 func _on_body_entered(body: Node3D) -> void:
 	$CollisionShape3D/MeshInstance3D.hide()
 	$EarnSound.play()
-	var d = global_position.distance_to(body.global_position)
+	var ring_pos = Vector2($CollisionShape3D.global_position.x, $CollisionShape3D.global_position.y)
+	var plane_pos = Vector2(body.global_position.x,body.global_position.y) 
+	var d = ring_pos.distance_to(plane_pos)
 	if d < 2.0:
 		$Label3D.text = "200"
 		$Label3D.modulate = Color(1,1,0)
