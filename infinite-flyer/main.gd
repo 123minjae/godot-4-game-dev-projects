@@ -7,7 +7,7 @@ var chunk_size = 200
 var max_position = -100
 
 func _process(delta: float) -> void:
-	if $Plane.position.z < max_position:
+	if $Plane.position.z < max_position + chunk_size:
 		num_chunks += 1
 		var new_chunk = chunk.instantiate()
 		new_chunk.position.z = max_position - chunk_size / 2

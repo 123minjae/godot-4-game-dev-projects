@@ -13,7 +13,7 @@ var level = 0
 
 func _ready() -> void:
 	add_buildings()
-	add_center_buildings()
+	#add_center_buildings()
 	add_rings()
 
 func _on_visible_on_screen_notifier_3d_screen_exited() -> void:
