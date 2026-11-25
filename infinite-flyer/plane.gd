@@ -18,6 +18,12 @@ var max_fuel = 10.0
 var fuel =  10.0:set = set_fuel
 var score = 0:set = set_score
 
+@export var boost_speed_multiplier = 1.5
+var is_boosting = false
+@export var boost_accel: float = 3.0
+var current_multiplier = 1.0
+@export var boost_fuel_multiplier = 2.0
+
 func get_input(delta):
 	pitch_input = Input.get_axis("pitch_down","pitch_up")
 	roll_input = Input.get_axis("roll_left","roll_right")
@@ -25,6 +31,8 @@ func get_input(delta):
 	if position.y >= max_altitude and pitch_input > 0:
 		position.y = max_altitude
 		pitch_input = 0
+	
+	is_boosting = Input.is_action_pressed("boost")
 	
 func _physics_process(delta: float) -> void:
 	get_input(delta)
@@ -34,12 +42,20 @@ func _physics_process(delta: float) -> void:
 	
 	velocity = -transform.basis.z * forward_speed
 	velocity += transform.basis.x * $cartoon_plane.rotation.z / deg_to_rad(45)*forward_speed/2.0
+	var target = boost_speed_multiplier if is_boosting else 1.0
+	current_multiplier = lerpf(current_multiplier, target, boost_accel * delta)
+	velocity *= current_multiplier
 	move_and_slide()
 	
 	if get_slide_collision_count() > 0 :
 		die()
-		
-	fuel -= fuel_burn * delta
+	
+	$BoostTrail.emitting = is_boosting
+	
+	if is_boosting:
+		fuel -= fuel_burn * delta * boost_fuel_multiplier
+	else:
+		fuel -= fuel_burn * delta
 		
 func set_fuel(value):
 	fuel = min(value,max_fuel)
